@@ -48,6 +48,74 @@ h1 {
   text-align: center;
 }
 
+/* Classe essencial para esconder as abas inativas */
+.hidden {
+  display: none !important;
+}
+
+/* Estrutura das Seções */
+.secao-conteudo {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Estilização dos Cards (Home e Detalhes) */
+.card-boas-vindas, .card-detalhes {
+  background-color: white;
+  max-width: 600px;
+  width: 90%;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  text-align: center;
+  margin-top: 20px;
+}
+
+.card-boas-vindas h2, .card-detalhes h2 {
+  color: #bd0272;
+  margin-bottom: 15px;
+}
+
+.card-boas-vindas p, .card-detalhes p {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* Lista da página de detalhes */
+.card-detalhes ul {
+  text-align: left;
+  display: inline-block;
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+.card-detalhes li {
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #444;
+}
+
+/* Botão de transição da Home para IA */
+.btn-começar {
+  background-color: #bd0272;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-começar:hover {
+  background-color: #96025a;
+}
+
 /* Área de Texto da IA (Resposta) */
 #texto-post {
   background-color: white;
@@ -95,7 +163,7 @@ input[type="email"], textarea {
   transition: border-color 0.2s;
 }
 
-input[type="email"]:focus, textarea :focus {
+input[type="email"]:focus, textarea:focus {
   border-color: #bd0272;
   outline: none;
 }
@@ -105,8 +173,8 @@ textarea {
   min-height: 120px;
 }
 
-/* Botão de Envio */
-button {
+/* Botão de Envio do Form */
+#meu-form button {
   background-color: #bd0272;
   color: white;
   border: none;
@@ -118,10 +186,16 @@ button {
   transition: background-color 0.2s, transform 0.1s;
 }
 
-button:hover {
+#meu-form button:hover {
   background-color: #96025a;
 }
 
-button:active {
+#meu-form button:active {
   transform: scale(0.98);
+}
+
+/* Animação suave ao trocar de aba */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
