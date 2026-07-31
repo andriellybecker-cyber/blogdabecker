@@ -69,31 +69,39 @@
         }
 
         // Lógica do formulário da IA (Mantida e integrada)
-        const form = document.getElementById('meu-form');
-        const textoPost = document.getElementById('texto-post');
+        // Substitua APENAS a lógica do formulário por esta:
+const form = document.getElementById('meu-form');
+const textoPost = document.getElementById('texto-post');
 
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            textoPost.innerText = "🤖 A IA está pensando...";
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    textoPost.innerText = "🤖 A IA está pensando...";
 
-            try {
-                const response = await fetch('https://andriellybecker.app.n8n.cloud/webhook/09021d42-2260-43de-9feb-7186a28546f0', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        email: document.getElementById('email').value,
-                        message: document.getElementById('message').value
-                    })
-                });
-
-                const text = await response.text();
-                textoPost.innerHTML = marked.parse(text);
-            } catch (error) {
-                textoPost.innerText = "❌ Ocorreu um erro ao falar com a IA. Tente novamente.";
-            }
+    try {
+        const response = await fetch('https://andriellybecker.app.n8n.cloud/webhook/09021d42-2260-43de-9feb-7186a28546f0', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: document.getElementById('email').value,
+                message: document.getElementById('message').value
+            })
         });
+
+        // Verifica se a rede respondeu com erro (ex: 404, 500)
+        if (!response.ok) {
+            throw new Error(`Erro no servidor: ${response.status}`);
+        }
+
+        const text = await response.text();
+        textoPost.innerHTML = marked.parse(text);
+        
+    } catch (error) {
+        console.error("Erro detalhado:", error);
+        textoPost.innerText = "❌ Erro ao falar com a IA. Verifique se o fluxo no n8n está ativo.";
+    }
+});
     </script>
 </body>
 </html>
