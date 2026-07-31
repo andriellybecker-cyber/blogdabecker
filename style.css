@@ -1,0 +1,14 @@
+nav{
+    background-color: rgb(9, 9, 113);
+    color:white;
+    width:100vw;
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+bory{
+    height:150vh;
+    margin:0;
+}
