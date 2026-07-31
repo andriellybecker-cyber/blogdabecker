@@ -1,14 +1,127 @@
-nav{
-    background-color: rgb(9, 9, 113);
-    color:white;
-    width:100vw;
-    position: sticky;
-    top: 0;
-    display: flex;
-    justify-content: space-evenly;
+/* Configuração geral e reset de margens */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-bory{
-    height:150vh;
-    margin:0;
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Barra de Navegação */
+nav {
+  background-color: #bd0272;
+  color: white;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 15px 0;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+
+nav p {
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+nav p:hover {
+  opacity: 0.8;
+}
+
+/* Título Principal */
+h1 {
+  color: #bd0272;
+  margin: 40px 0 20px 0;
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+/* Área de Texto da IA (Resposta) */
+#texto-post {
+  background-color: white;
+  max-width: 600px;
+  width: 90%;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  margin-bottom: 30px;
+  border-left: 5px solid #bd0272;
+}
+
+/* Formulário de Envio */
+#meu-form {
+  background-color: white;
+  max-width: 600px;
+  width: 90%;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 50px;
+}
+
+#meu-form div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+label {
+  font-weight: 600;
+  color: #555;
+}
+
+input[type="email"], textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.2s;
+}
+
+input[type="email"]:focus, textarea :focus {
+  border-color: #bd0272;
+  outline: none;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* Botão de Envio */
+button {
+  background-color: #bd0272;
+  color: white;
+  border: none;
+  padding: 14px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+button:hover {
+  background-color: #96025a;
+}
+
+button:active {
+  transform: scale(0.98);
 }

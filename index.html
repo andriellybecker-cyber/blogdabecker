@@ -2,6 +2,7 @@
 <html lang="pt-br">
 <head>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>meu site</title>
@@ -9,14 +10,14 @@
 <link rel="stylesheet" href="style.css">
 <body>
     <nav>
+        <p>IA</p>
         <p>Home</p>
         <p>Detalhes</p>
     </nav>
-    <h1>computação gráfica</h1>
-    <h4>aula do professor Laion Black</h4>
+    <h1>Blog da Becker</h1>
     <br>
     <br>
-    <br>
+    <p id="texto-post">Bem vindo ao meu blog</p>
     <form id="meu-form">
         <div>
           <label for="email">Digite seu email</label>
@@ -25,8 +26,7 @@
         <div>
           <label for="message">Mande uma message:</label>
           <textarea id="message" required></textarea>
-        </div>
-        </label>
+        </div> 
         <button type="submit">Send</button>
       </form>
 
@@ -56,7 +56,6 @@
         textoPost.innerHTML = marked.parse(text);
       });
     </script>
-    <p id="texto-post">Bem vindo a o meu blog</p>
 </body>
 </html>
 
