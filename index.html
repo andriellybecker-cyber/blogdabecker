@@ -57,17 +57,15 @@
     </section>
 
     <script>
-  // FUNÇÃO DE NAVEGAÇÃO (Única adição solicitada)
+  // FUNÇÃO DE NAVEGAÇÃO
   function mostrarSecao(idSecao) {
-      // Esconde as três seções
       document.querySelectorAll('.secao-conteudo').forEach(secao => {
           secao.classList.add('hidden');
       });
-      // Mostra apenas a seção do botão que foi clicado
       document.getElementById(`secao-${idSecao}`).classList.remove('hidden');
   }
 
-  // SEU CÓDIGO ORIGINAL (Exatamente igual, sem nenhuma alteração)
+  // AJUSTE SEGURO DO SEU CÓDIGO ORIGINAL
   const form = document.getElementById('meu-form');
   const textoPost = document.getElementById('texto-post');
 
@@ -76,21 +74,44 @@
 
     textoPost.innerText = "🤖 A IA está pensando...";
 
-    // Faz a requisição direto para o Webhook de PRODUÇÃO do n8n
-    const response = await fetch('https://andriellybecker.app.n8n.cloud/webhook/09021d42-2260-43de-9feb-7186a28546f0', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        email: document.getElementById('email').value,
-        message: document.getElementById('message').value
-      })
-    });
+    try {
+        // Faz a requisição direto para o Webhook de PRODUÇÃO do n8n
+        const response = await fetch('https://n8n.cloud', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email: document.getElementById('email').value,
+            message: document.getElementById('message').value
+          })
+        });
 
-    // Pede para o navegador ler a resposta como texto puro
-    const text = await response.text();
+        // 1. Lemos a resposta como JSON (formato padrão que o n8n envia quando dá sucesso)
+        const jsonResponse = await response.json();
+        
+        // 2. Procuramos onde está o texto dentro do que o n8n enviou
+        // Se o n8n enviar um texto direto, ou dentro de 'output', 'text' ou 'data', o código abaixo captura automaticamente!
+        let textoFinal = "";
+        
+        if (typeof jsonResponse === 'string') {
+            textoFinal = jsonResponse;
+        } else if (jsonResponse.output) {
+            textoFinal = jsonResponse.output;
+        } else if (jsonResponse.text) {
+            textoFinal = jsonResponse.text;
+        } else if (jsonResponse.data) {
+            textoFinal = jsonResponse.data;
+        } else {
+            // Caso o n8n envie em outro campo, pegamos o primeiro valor que aparecer
+            textoFinal = Object.values(jsonResponse)[0] || "Resposta recebida, mas formato desconhecido.";
+        }
 
-    // Substitui o texto pela resposta da IA!
-    textoPost.innerHTML = marked.parse(text);
+        // Substitui o texto pela resposta da IA formatada em Markdown!
+        textoPost.innerHTML = marked.parse(textoFinal);
+
+    } catch (error) {
+        console.error("Erro ao processar resposta:", error);
+        textoPost.innerText = "❌ Erro ao exibir a resposta da IA. Verifique o formato no n8n.";
+    }
   });
 </script>
 
