@@ -1,119 +1,159 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-    <script src="https://jsdelivr.net"></script>
-    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog da Becker</title>
+    <meta name="description" content="Portfólio profissional de Becker - desenvolvimento de sistemas e soluções com IA.">
+    <title>Becker | Portfólio e IA</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <nav>
-        <p onclick="mostrarSecao('home')">Home</p>
-        <p onclick="mostrarSecao('ia')">IA</p>
-        <p onclick="mostrarSecao('detalhes')">Detalhes</p>
-    </nav>
+    <header class="hero">
+        <nav class="topbar">
+            <a href="#home">Home</a>
+            <a href="#projetos">Projetos</a>
+            <a href="#contato">Contato</a>
+            <a href="#sobre">Sobre</a>
+        </nav>
 
-    <h1>Blog da Becker</h1>
-
-    <!-- SEÇÃO HOME -->
-    <section id="secao-home" class="secao-conteudo">
-        <div class="card-boas-vindas">
-            <h2>Bem-vindo ao meu blog! 👋</h2>
-            <p>No que precisar, você pode perguntar que iremos te ajudar. Nosso assistente inteligente está pronto para responder suas dúvidas.</p>
-            <button onclick="mostrarSecao('ia')" class="btn-começar">Ir para a IA</button>
-        </div>
-    </section>
-
-    <!-- SEÇÃO IA -->
-    <section id="secao-ia" class="secao-conteudo hidden">
-        <p id="texto-post">Bem-vindo ao chat da IA! Faça sua pergunta abaixo.</p>
-        
-        <form id="meu-form">
-            <div>
-                <label for="email">Digite seu email</label>
-                <input type="email" id="email" required>
+        <div class="hero-content">
+            <span class="eyebrow">Portfólio Profissional</span>
+            <h1>Becker | Desenvolvimento de Sistemas</h1>
+            <p>Design moderno, projetos reais e uma IA integrada para tornar sua experiência mais inteligente. Ideal para mostrar no LinkedIn.</p>
+            <div class="hero-actions">
+                <a class="btn btn-primary" href="#contato">Falar com a IA</a>
+                <a class="btn btn-secondary" href="#projetos">Ver projetos</a>
             </div>
-            <div>
-                <label for="message">Mande uma mensagem:</label>
-                <textarea id="message" required></textarea>
-            </div>
-            <button type="submit">Enviar</button>
-        </form>
-    </section>
-
-    <!-- SEÇÃO DETALHES -->
-    <section id="secao-detalhes" class="secao-conteudo hidden">
-        <div class="card-detalhes">
-            <h2>Sobre o Projeto 📝</h2>
-            <p>Este blog foi desenvolvido por uma aluna do curso <strong>Técnico em Desenvolvimento de Sistemas</strong>.</p>
-            <p>A plataforma foi criada como uma atividade integrada das matérias de:</p>
-            <ul>
-                <li>Computação Gráfica</li>
-                <li>Análise e Projeto de Sistemas</li>
-                <li>Ciência de Dados</li>
-            </ul>
         </div>
-    </section>
+    </header>
+
+    <main class="page-content">
+        <section id="home" class="section section-overview">
+            <div class="content-grid">
+                <article class="card card-welcome">
+                    <h2>Bem-vindo ao Blog da Becker</h2>
+                    <p>Este site reúne minhas habilidades em tecnologia, computação gráfica, análise de sistemas e ciência de dados. Ele foi projetado para mostrar um trabalho profissional, elegante e funcional.</p>
+                    <ul>
+                        <li>Layout responsivo e clean</li>
+                        <li>Interação com IA via formulário</li>
+                        <li>Estrutura visual forte para portfólio</li>
+                    </ul>
+                </article>
+
+                <article class="card card-stats">
+                    <h3>Destaques do projeto</h3>
+                    <div class="stats-grid">
+                        <div>
+                            <strong>IA Integrada</strong>
+                            <p>Envie perguntas e receba respostas automatizadas.</p>
+                        </div>
+                        <div>
+                            <strong>Design Profissional</strong>
+                            <p>Layout com tipografia e cores coerentes para LinkedIn.</p>
+                        </div>
+                        <div>
+                            <strong>Tecnologia Real</strong>
+                            <p>Integração com webhook e uso de Markdown na resposta.</p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="projetos" class="section section-projects">
+            <div class="section-header">
+                <span>Projetos</span>
+                <h2>O que este site entrega</h2>
+            </div>
+            <div class="project-grid">
+                <article class="project-card">
+                    <h3>Blog e portfólio</h3>
+                    <p>Uma página limpa com apresentação clara do projeto, pronta para ser compartilhada com recrutadores e conexões.</p>
+                </article>
+                <article class="project-card">
+                    <h3>Assistente Inteligente</h3>
+                    <p>Formulário que envia dados a um webhook n8n e mostra a resposta da IA com formatação Markdown.</p>
+                </article>
+                <article class="project-card">
+                    <h3>Atividade acadêmica integrada</h3>
+                    <p>Conteúdo baseado em disciplinas como Computação Gráfica, Análise de Sistemas e Ciência de Dados.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="contato" class="section section-contact">
+            <div class="section-header">
+                <span>Contato</span>
+                <h2>Converse com a IA agora</h2>
+            </div>
+            <div class="contact-layout">
+                <div id="texto-post" class="response-panel">
+                    <h3>Assistente Becker</h3>
+                    <p>Use o formulário ao lado para enviar sua mensagem. A IA responderá com um texto inteligente.</p>
+                </div>
+
+                <form id="meu-form" class="contact-form">
+                    <div class="form-group">
+                        <label for="email">Seu email</label>
+                        <input type="email" id="email" placeholder="seu@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Sua mensagem</label>
+                        <textarea id="message" placeholder="Digite sua dúvida ou feedback" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Enviar mensagem</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="sobre" class="section section-about">
+            <div class="section-header">
+                <span>Sobre</span>
+                <h2>Minha jornada em desenvolvimento</h2>
+            </div>
+            <div class="about-card">
+                <p>Este projeto foi desenvolvido por uma aluna do curso <strong>Técnico em Desenvolvimento de Sistemas</strong>. O objetivo é apresentar um trabalho profissional que também sirva como portfólio para o LinkedIn.</p>
+                <p>As principais disciplinas que participaram do desenvolvimento deste site foram:</p>
+                <ul>
+                    <li>Computação Gráfica</li>
+                    <li>Análise e Projeto de Sistemas</li>
+                    <li>Ciência de Dados</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Becker • Portfólio de Desenvolvimento de Sistemas</p>
+    </footer>
+
+    <a href="#home" class="top-button" aria-label="Voltar ao topo">↑</a>
 
     <script>
-  // FUNÇÃO DE NAVEGAÇÃO
-  function mostrarSecao(idSecao) {
-      document.querySelectorAll('.secao-conteudo').forEach(secao => {
-          secao.classList.add('hidden');
-      });
-      document.getElementById(`secao-${idSecao}`).classList.remove('hidden');
-  }
+        const form = document.getElementById('meu-form');
+        const textoPost = document.getElementById('texto-post');
 
-  // AJUSTE SEGURO DO SEU CÓDIGO ORIGINAL
-  const form = document.getElementById('meu-form');
-  const textoPost = document.getElementById('texto-post');
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
+            textoPost.innerText = '🤖 A IA está pensando...';
 
-    textoPost.innerText = "🤖 A IA está pensando...";
+            const response = await fetch('https://andriellybecker.app.n8n.cloud/webhook/09021d42-2260-43de-9feb-7186a28546f0', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    email: document.getElementById('email').value,
+                    message: document.getElementById('message').value
+                })
+            });
 
-    try {
-        // Faz a requisição direto para o Webhook de PRODUÇÃO do n8n
-        const response = await fetch('https://n8n.cloud', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            email: document.getElementById('email').value,
-            message: document.getElementById('message').value
-          })
+            const text = await response.text();
+            textoPost.innerHTML = marked.parse(text);
         });
-
-        // 1. Lemos a resposta como JSON (formato padrão que o n8n envia quando dá sucesso)
-        const jsonResponse = await response.json();
-        
-        // 2. Procuramos onde está o texto dentro do que o n8n enviou
-        // Se o n8n enviar um texto direto, ou dentro de 'output', 'text' ou 'data', o código abaixo captura automaticamente!
-        let textoFinal = "";
-        
-        if (typeof jsonResponse === 'string') {
-            textoFinal = jsonResponse;
-        } else if (jsonResponse.output) {
-            textoFinal = jsonResponse.output;
-        } else if (jsonResponse.text) {
-            textoFinal = jsonResponse.text;
-        } else if (jsonResponse.data) {
-            textoFinal = jsonResponse.data;
-        } else {
-            // Caso o n8n envie em outro campo, pegamos o primeiro valor que aparecer
-            textoFinal = Object.values(jsonResponse)[0] || "Resposta recebida, mas formato desconhecido.";
-        }
-
-        // Substitui o texto pela resposta da IA formatada em Markdown!
-        textoPost.innerHTML = marked.parse(textoFinal);
-
-    } catch (error) {
-        console.error("Erro ao processar resposta:", error);
-        textoPost.innerText = "❌ Erro ao exibir a resposta da IA. Verifique o formato no n8n.";
-    }
-  });
-</script>
-
+    </script>
 </body>
+
 </html>
